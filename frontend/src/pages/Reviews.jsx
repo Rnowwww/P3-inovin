@@ -49,25 +49,35 @@ export default function Reviews() {
       );
       if (response.status === 201) {
         navigateTo("/wine-selection");
+        toast("Votre message a bien été transmis !", {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       }
     } catch (error) {
       console.error(error);
     }
   };
 
-  const goToWineSelection = async () => {
-    await navigateTo("/wine-selection");
-    toast("Votre message a bien été transmis !", {
-      position: "bottom-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-    });
-  };
+  // const goToWineSelection = async () => {
+  //   await navigateTo("/wine-selection");
+  //   toast("Votre message a bien été transmis !", {
+  //     position: "bottom-right",
+  //     autoClose: 3000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: false,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: "colored",
+  //   });
+  // };
 
   return (
     <div className="reviewsPageDiv">
@@ -116,7 +126,7 @@ export default function Reviews() {
           className="primary-button"
           id="reviewsPageButton"
           type="submit"
-          onClick={goToWineSelection}
+          onClick={handleSubmit}
         >
           Envoyer
         </button>
