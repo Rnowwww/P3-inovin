@@ -2,13 +2,30 @@ require("dotenv").config();
 
 const mysql = require("mysql2/promise");
 
-const urlDB = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQLPASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQLDATABASE}`;
+// const urlDB = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQLPASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQLDATABASE}`;
 
 // create a connection pool to the database
 
-// const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
+const {
+  DB_HOST,
+  DB_PORT,
+  DB_USER,
+  DB_PASSWORD,
+  DB_NAME,
+  MYSQLUSER,
+  MYSQLPASSWORD,
+  MYSQLHOST,
+  MYSQLPORT,
+  MYSQLDATABASE,
+} = process.env;
 
-const pool = mysql.createPool(urlDB);
+const pool = mysql.createPool({
+  host: MYSQLHOST,
+  port: MYSQLPORT,
+  user: MYSQLUSER,
+  password: MYSQLPASSWORD,
+  database: MYSQLDATABASE,
+});
 
 // try a connection
 
