@@ -2,13 +2,19 @@ require("dotenv").config();
 
 const mysql = require("mysql2/promise");
 
-const urlDB = `mysql://root:LkyDsJ9lah9IXYsd1q4k@containers-us-west-66.railway.app:5918/railway`;
+// const urlDB = `mysql://root:LkyDsJ9lah9IXYsd1q4k@containers-us-west-66.railway.app:5918/railway`;
 
 // create a connection pool to the database
 
-// const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
+const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
-const pool = mysql.createPool(urlDB);
+const pool = mysql.createPool({
+  host: DB_HOST,
+  port: DB_PORT,
+  user: DB_USER,
+  password: DB_PASSWORD,
+  database: DB_NAME,
+});
 
 // try a connection
 
