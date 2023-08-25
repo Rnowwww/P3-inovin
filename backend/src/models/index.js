@@ -4,28 +4,32 @@ const mysql = require("mysql2/promise");
 
 // const urlDB = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQLPASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQLDATABASE}`;
 
+const urlDB =
+  "mysql://root:LkyDsJ9lah9IXYsd1q4k@containers-us-west-66.railway.app:5918/railway";
 // create a connection pool to the database
 
-const {
-  DB_HOST,
-  DB_PORT,
-  DB_USER,
-  DB_PASSWORD,
-  DB_NAME,
-  MYSQLUSER,
-  MYSQLPASSWORD,
-  MYSQLHOST,
-  MYSQLPORT,
-  MYSQLDATABASE,
-} = process.env;
+// const {
+//   DB_HOST,
+//   DB_PORT,
+//   DB_USER,
+//   DB_PASSWORD,
+//   DB_NAME,
+//   MYSQLUSER,
+//   MYSQLPASSWORD,
+//   MYSQLHOST,
+//   MYSQLPORT,
+//   MYSQLDATABASE,
+// } = process.env;
 
-const pool = mysql.createPool({
-  host: MYSQLHOST,
-  port: MYSQLPORT,
-  user: MYSQLUSER,
-  password: MYSQLPASSWORD,
-  database: MYSQLDATABASE,
-});
+// const pool = mysql.createPool({
+//   host: MYSQLHOST,
+//   port: MYSQLPORT,
+//   user: MYSQLUSER,
+//   password: MYSQLPASSWORD,
+//   database: MYSQLDATABASE,
+// });
+
+const pool = mysql.createPool(urlDB);
 
 // try a connection
 
