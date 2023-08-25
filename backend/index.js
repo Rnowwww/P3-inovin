@@ -4,7 +4,7 @@ const app = require("./src/app");
 
 const port = parseInt(process.env.APP_PORT ?? "4242", 10);
 
-app.listen(port, (err) => {
+app.listen(port, "0.0.0.0", (err) => {
   if (err) {
     console.error("Something bad happened");
   } else {
